@@ -12,10 +12,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.List;
@@ -25,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * create by : Jarry Leo
  * date : 2018/7/26 10:19
  */
-public class CountDownTextView extends TextView implements LifecycleObserver, View.OnClickListener {
+public class CountDownTextView extends AppCompatTextView implements LifecycleObserver, View.OnClickListener {
     private static final String SHARED_PREFERENCES_FILE = "CountDownTextView";
     private static final String SHARED_PREFERENCES_FIELD_TIME = "last_count_time";
     private static final String SHARED_PREFERENCES_FIELD_TIMESTAMP = "last_count_timestamp";
@@ -77,7 +78,7 @@ public class CountDownTextView extends TextView implements LifecycleObserver, Vi
      * 控件自动绑定生命周期,宿主可以是activity或者fragment
      */
     private void autoBindLifecycle(Context context) {
-        if (context instanceof FragmentActivity) {
+        if (context instanceof AppCompatActivity) {
             FragmentActivity activity = (FragmentActivity) context;
             FragmentManager fm = activity.getSupportFragmentManager();
             List<Fragment> fragments = fm.getFragments();
